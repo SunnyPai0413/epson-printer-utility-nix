@@ -68,16 +68,13 @@ jobs:
           paths="$(nix build --no-link --print-out-paths --no-write-lock-file \
             ".#packages.${TARGET_SYSTEM}.default" \
             ".#packages.${TARGET_SYSTEM}.epson-printer-utility" \
-            ".#packages.${TARGET_SYSTEM}.epson-backend" | sort -u)"
+            ".#packages.${TARGET_SYSTEM}.epson-backend" | sort -u | paste -sd ' ' -)"
           if [[ -z "$paths" ]]; then
             echo "::error::The build returned no output paths; refusing to configure an unrestricted upload."
             exit 1
           fi
-          {
-            echo 'paths<<EOF'
-            printf '%s\n' "$paths"
-            echo 'EOF'
-          } >> "$GITHUB_OUTPUT"
+          # cachix-action v17 splits pathsToPush on literal spaces, not newlines.
+          printf 'paths=%s\n' "$paths" >> "$GITHUB_OUTPUT"
 
       # Register the action only after every requested output has built successfully.
       # Its post step uploads these paths and their runtime closures, without a store scan.
