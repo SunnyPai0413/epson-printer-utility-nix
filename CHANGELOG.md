@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2.0 (unreleased)
+## 1.0.0 — 2026-11-26
+
+First formal public release; Git Tag: `v1.0.0`. NixOS-first packaging and
+integration, with Nix packages also usable on other Linux distributions; no
+native installer or service integration is supplied for those distributions.
 
 Upstream remains Epson Printer Utility 1.1.3 / epson-backend 1.3.1.
 
@@ -10,9 +14,22 @@ Upstream remains Epson Printer Utility 1.1.3 / epson-backend 1.3.1.
 - JSON schema 2: variable ink lists, distinct black variants, independent warnings and communication outcome; see docs/JSON.md.
 - Build/install native ecblp; optional NixOS CUPS integration with shared FIFO paths and locks.
 - Let ecblp wait through sustained FIFO backpressure, retaining cancellation and no replay on failure; log I/O stages, errno and poll events.
+- Restore CUPS backend FIFO/lock access persistently with tmpfiles ACLs, including after reboot.
 - Run GUI maintenance waits in a worker; retain one-command, fail-closed scheduled maintenance.
 - Add public installation, source/license and validation documentation.
 - Mark every adapted upstream source file with a dated modification notice and install its generated file list.
+- Validate L805 remote IPP multi-page PDF printing through NixOS CUPS and the USB
+  backend on 2026-11-26; reboot checks passed for ACLs, CUPS and print jobs.
+- Complete native x86_64-linux/aarch64-linux CI builds and Cachix publishing for
+  the pre-release baseline; the final versioned Tag still needs its own CI runs.
+- Document fixed-Tag installation, L805 driver/queue setup and optional IPP
+  sharing. Other Epson models and native network maintenance remain unverified;
+  successful builds do not imply hardware compatibility.
+
+This release consolidates the internal 0.2.0 draft. JSON schema 2 differs from
+the local predecessor; project version 1.0.0 does not change the upstream versions
+or the JSON schema number. See [release notes](docs/RELEASE-NOTES.md) and the
+[dated validation record](validation/README.md) for evidence and remaining limits.
 
 ## 0.1.0 (local predecessor)
 

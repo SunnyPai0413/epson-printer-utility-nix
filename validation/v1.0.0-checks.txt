@@ -1,0 +1,65 @@
+Project v1.0.0 — 2026-11-26 Asia/Singapore — local host: x86_64-linux
+VERSION: 1.0.0; intended Git Tag: v1.0.0.
+Upstream: Epson Printer Utility 1.1.3 / epson-backend 1.3.1 (unchanged).
+
+Local release preparation (uncommitted working tree):
+
+PASS: nix --extra-experimental-features 'nix-command flakes' build \
+        --no-link --print-out-paths --no-write-lock-file -L \
+        .#default .#epson-printer-utility .#epson-backend
+      All three outputs built with project version 1.0.0.
+      Utility CTest: reported-model, native-network-parser, native-parser,
+      upstream-modification-notices, cli-offline (5/5 passed).
+      Backend CTest: cups-fifo (1/1 passed), including sustained backpressure,
+      byte-exact transfer, cancellation of file/stdin jobs and reader loss.
+PASS: nix --extra-experimental-features 'nix-command flakes' flake check . \
+        --no-write-lock-file -L
+      All four x86_64-linux checks: utility, backend, module, sources.
+PASS: nix --extra-experimental-features 'nix-command flakes' flake check . \
+        --all-systems --no-build --no-write-lock-file
+      Both systems' packages, apps, devShells and checks evaluated successfully.
+      This is evaluation only for aarch64-linux, not a new ARM build.
+PASS: all seven README Nix examples extracted and evaluated with locked nixpkgs
+      and the local module standing in for the not-yet-created v1.0.0 Tag.
+      Verified version 1.0.0, epson-escpr plus backend driver integration, CUPS
+      lp runtime ACL, existing-user group, no automatic queues/default timer,
+      explicit IPP listener/allow-list/port 631, network-only mode and timer selector.
+      No system configuration was activated.
+PASS: installed epson-printer-cli --version reports 1.0.0;
+      ecblp --version still reports upstream epson-backend-1.3.1.
+PASS: all three outputs retain byte-identical project LICENSE, NOTICE.md,
+      current CHANGELOG.md, both LICENSES/COPYING texts and a nonempty installed
+      UPSTREAM-MODIFICATIONS.txt manifest. Existing file-notice CTest passed.
+PASS: sha256sum -c upstream/SHA256SUMS (source RPM, both tarballs, extracted spec).
+PASS: git diff --check and local documentation-link checks.
+PASS: no changes to src/, patches/, nix/, tests/, CMakeLists.txt, flake.nix,
+      flake.lock, upstream archives/spec/checksums or license/notice texts.
+
+Hardware/reboot results supplied by the maintainer on 2026-11-26:
+
+CONFIRMED: L805 remote IPP multi-page PDF printing completed after the ecblp
+           FIFO backpressure fix (2cb2500).
+CONFIRMED: after the persistent tmpfiles ACL fix (138ad2f), reboot validation
+           passed for runtime ACLs, CUPS service and print jobs.
+Path: remote client -> IPP -> NixOS CUPS -> model driver -> ecblp/ecbd -> USB L805.
+These are maintainer confirmations, not new raw hardware logs from this run.
+Historical L805 USB read-only, nozzle/cleaning and GUI evidence is retained
+unchanged; see README.md in this directory for provenance and limits.
+
+Independently checked native CI and Cachix publishing:
+
+Baseline: 138ad2f59c20750c66e73173aa0990a27a259335 (before the version bump).
+PASS: x86_64-linux native build and Cachix publish/post-upload steps:
+      https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/runs/45826063829
+PASS: aarch64-linux native build and Cachix publish/post-upload steps:
+      https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/runs/45826063836
+The final versioned Tag still requires its own two CI runs and cache uploads.
+
+NOT TESTED: other Epson models, native Epson network maintenance/cross-subnet
+operation, aarch64 printer hardware, full GUI maintenance interaction, timer
+activation, active maintenance during printing, other distributions' native
+installation integration. IPP printing is not direct Epson network maintenance.
+
+No physical print/maintenance command, cleaning or reboot was performed for this
+version/documentation preparation. These validation checks preceded the later
+user-authorized commit/push; they did not create a Tag or Release.

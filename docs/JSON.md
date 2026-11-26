@@ -1,10 +1,12 @@
 # CLI JSON schema 2
 
-Project 0.2.0 preserves `status`, `ink`, `nozzle-check`, `clean`, `--json`,
+Project v1.0.0 preserves `status`, `ink`, `nozzle-check`, `clean`, `--json`,
 `--confirm-clean`, and `nozzle-check --scheduled`; it adds `devices`, `paper-count`
-and `--connection all|usb|network`.
+and `--connection all|usb|network`. In this release, `project_version` is `1.0.0`,
+`schema_version` remains `2`, `upstream_utility_version` is `1.1.3` and
+`upstream_backend_version` is `1.3.1`. These version numbers are independent.
 
-## Compatibility changes
+## Compatibility changes from local pre-release clients
 
 - `schema_version` is now `2`. Project and both upstream versions are separate fields.
 - `ink` is the **actual reported list, in reported order**, with zero to twenty entries.

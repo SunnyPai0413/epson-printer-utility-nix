@@ -5,9 +5,72 @@ maintenance tutorial. Follow the top-level README for installation and usage.
 Machine names, process IDs and store hashes in historical text logs have been
 redacted; source SHA-256 values are retained unchanged.
 
-## Project 0.2.0 — 2026-11-26
+## v1.0.0 release validation — 2026-11-26
 
-Current x86_64-linux builds and flake checks pass. They cover:
+Project version is `1.0.0`; the release Tag is `v1.0.0`. Upstream remains Epson
+Printer Utility `1.1.3` / epson-backend `1.3.1`. The project is NixOS-first;
+hardware evidence covers a USB L805 on NixOS x86_64, not all Epson models.
+
+### Printing and reboot confirmation
+
+The maintainer supplied the following completed results on 2026-11-26 for this
+release record:
+
+- L805 remote IPP multi-page PDF printing completed successfully after the ecblp
+  FIFO backpressure fix (`2cb2500`).
+- After the persistent tmpfiles ACL fix (`138ad2f`), reboot verification passed
+  for runtime ACLs, the CUPS service and print jobs.
+
+The tested path was **remote client → IPP → NixOS CUPS → model driver → ecblp/ecbd
+→ USB L805**. This verifies CUPS sharing and USB transport, not Epson's direct
+network maintenance protocol. The backpressure fix keeps cancellation possible
+and fails on reader loss without replaying print data. The ACL fix restores `lp`
+group access to runtime FIFO/locks after reboot and covers files recreated by ecbd.
+
+These hardware/reboot results are maintainer confirmations supplied for release
+preparation; new raw hardware transcripts are not included. Existing raw JSON and
+logs retain the versions and dates of the earlier runs. Version/documentation
+preparation does not repeat cleaning or submit additional physical print jobs.
+
+### Native CI builds and Cachix publishing
+
+GitHub Actions reports successful builds, cache setup and post-job uploads for
+baseline commit `138ad2f59c20750c66e73173aa0990a27a259335` on 2026-11-26:
+
+| System | Native runner | Build and Cachix upload evidence |
+| --- | --- | --- |
+| `x86_64-linux` | `ubuntu-24.04` | [Successful run 45826063829](https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/runs/45826063829) |
+| `aarch64-linux` | `ubuntu-24.04-arm` | [Successful run 45826063836](https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/runs/45826063836) |
+
+Each run built the default suite, utility and backend, including package CTests,
+then completed both `Publish successful outputs to Cachix` and its post step.
+CI does not run printer hardware tests or the separate flake module/source checks.
+These runs precede the version bump; the final `v1.0.0` Tag needs its own two CI
+runs and cache uploads. No Tag or Release is created by preparing this record.
+
+### Local release checks and remaining limits
+
+The v1.0.0 working-tree build and flake check results are recorded separately in
+[`v1.0.0-checks.txt`](v1.0.0-checks.txt). Original source archives, license texts,
+print/maintenance code and NixOS service logic are unchanged by release preparation.
+
+Unverified: all other Epson models; direct Epson network discovery, status and
+maintenance; cross-subnet network operation; aarch64 printer hardware; full GUI
+maintenance interaction; timer activation; deliberately invoking maintenance
+during printing; native installation integration on other Linux distributions.
+Fixtures and successful builds do not establish hardware compatibility.
+
+### Retained L805 read-only evidence
+
+[`current-usb.json`](current-usb.json) and [`current-gui.txt`](current-gui.txt)
+are internal 0.2.0 evidence retained unchanged. They establish L805 USB enumeration,
+status, ink IDs/unknown values, feed counters, ecblp discovery and desktop GUI
+startup. Historical nozzle/cleaning records are accounted for below. Their earlier
+unverified lists are superseded by the printing, reboot and CI evidence above.
+
+## Retained internal 0.2.0 evidence — earlier on 2026-11-26
+
+The internal x86_64-linux builds and flake checks passed at that stage. They covered:
 
 - Original source RPM, both tarballs and extracted spec SHA-256.
 - Epson's USB parser: status/error/warning independence, cancellation, no guessed
@@ -49,11 +112,11 @@ was sent. This regression read:
 The final GUI was also smoke-tested in a real X11/XWayland session with ecbd
 stopped (`current-gui.txt`); no maintenance interaction was executed.
 
-Unverified: network printers, other printer models, actual CUPS page output and
-maintenance during printing, complete NixOS module activation, aarch64 builds and
-new GUI maintenance interaction on hardware. Parser/FIFO fixtures do not establish
-hardware compatibility. New USB/network raw color metadata and counters must not
-be presented as universally supported.
+At that earlier stage, CUPS page output, reboot persistence and aarch64 builds
+had not yet been verified; the release record above supersedes those gaps. The
+other hardware limitations still apply. Parser/FIFO fixtures do not establish
+hardware compatibility. USB/network raw color metadata and counters must not be
+presented as universally supported.
 
 ## Retained L805 predecessor evidence — 2026-11-25–26
 
