@@ -4,7 +4,9 @@
 #include <sys/file.h>
 #include <fcntl.h>
 #include <unistd.h>
+#ifndef EPSON_RUNTIME
 #define EPSON_RUNTIME "/run/epson-printer-utility"
+#endif
 #define EPSON_LOCK EPSON_RUNTIME "/operation.lock"
 /* Created by the module's tmpfiles rule, shared by the GUI and CLI. Never unlink it. */
 static inline int epson_operation_lock(int wait) {

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Temporary validation only. No /etc changes or NixOS activation.
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Historical developer helper, not an installation tutorial. No NixOS activation.
 set -euo pipefail
 project=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 action=${1:-help}
@@ -20,9 +21,11 @@ case "$action" in
   group=$(id -g "$operator")
   if systemctl is-active --quiet ecbd; then echo 'ecbd already active; use its installed module instead'; exit 1; fi
   install -d -m 0770 -o root -g "$group" /run/epson-printer-utility
-  touch /run/epson-printer-utility/operation.lock
-  chown root:"$group" /run/epson-printer-utility/operation.lock
-  chmod 0660 /run/epson-printer-utility/operation.lock
+  for lock in operation.lock fifo.lock; do
+    touch "/run/epson-printer-utility/$lock"
+    chown root:"$group" "/run/epson-printer-utility/$lock"
+    chmod 0660 "/run/epson-printer-utility/$lock"
+  done
   systemd-run --unit=epson-ecbd-validation --property=Type=simple \
     --property=Group="$group" --property=UMask=0007 --property=TimeoutStopSec=10 \
     --setenv=EPSON_USB_SERIAL="$serial" --setenv=EPSON_USB_PRODUCT="$product" \
@@ -32,7 +35,7 @@ case "$action" in
   # Same CLI and options as nixosModules.default's timer service. No timer is enabled.
   systemd-run --unit=epson-nozzle-check --property=Type=oneshot \
     --property=TimeoutStartSec=150 --property=Restart=no \
-    "$utility/bin/epson-printer-cli" nozzle-check --scheduled --json --device auto
+    "$utility/bin/epson-printer-cli" nozzle-check --scheduled --json --device USB
   ;;
  stop)
   systemctl stop epson-ecbd-validation.service

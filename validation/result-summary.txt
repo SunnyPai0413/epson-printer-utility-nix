@@ -1,3 +1,7 @@
+Historical predecessor result (before project 0.2.0).
+See validation/README.md for current scope and validation.
+This summary predates the later individually authorized rounds in y-clean-round-*/summary.txt.
+
 Final scope: standalone printer-utils only (native GUI, CLI, ecbd, USB permissions,
 optional nozzle-check timer). No print-server or print-queue configuration delivered.
 

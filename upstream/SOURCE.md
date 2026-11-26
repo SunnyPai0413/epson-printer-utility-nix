@@ -9,7 +9,10 @@ The original download URL/date were not supplied and are not inferred here.
 The Nix builds use these exact tarballs and apply `patches/adapt.py` in the sandbox; they do not use upstream binary executables or libraries.
 Original licenses, notices, authors and sources remain in the archives. COPYING files are also copied to `LICENSES/` and installed with the packages.
 The utility states LGPL-2.1-or-later; the backend states GPL-2.0-or-later with exceptions in individual files. Consult the original file notices for bundled components.
-New CLI/build adaptations are GPL-2.0-or-later (see `LICENSES/epson-backend-COPYING`).
+New CLI/build adaptations are GPL-2.0-or-later (see the top-level `LICENSE` and `NOTICE.md`).
+Project version is tracked separately in `VERSION`; the retained upstream versions are unchanged.
+`SHA256SUMS` also covers the extracted spec. Run `sha256sum -c upstream/SHA256SUMS` from the repository root.
+The flake source-integrity check verifies all four retained files.
 
 SHA-256:
 

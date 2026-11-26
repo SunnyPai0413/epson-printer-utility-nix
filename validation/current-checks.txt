@@ -1,0 +1,38 @@
+Project 0.2.0 — 2026-11-26 Asia/Singapore — x86_64-linux
+Upstream: Printer Utility 1.1.3 / epson-backend 1.3.1 (unchanged).
+
+PASS: separate fresh local Git checkout plus the final uncommitted changes;
+      nix build path:<fresh-checkout> --no-link.
+      No .work, result symlinks or prepared upstream trees were copied.
+PASS: nix flake check path:<fresh-checkout>.
+      Four flake checks: utility, backend, module, sources.
+      Utility CTest: reported-model, native-network-parser, native-parser,
+      cli-offline. Backend CTest: cups-fifo (including broken reader).
+PASS: working-tree and fresh-checkout package src evaluated to the same Nix
+      store source after excluding Python bytecode caches from the fileset.
+PASS: original source RPM, both tarballs and extracted spec SHA-256.
+PASS: git diff --check.
+
+PASS: L805 USB enumeration, native-ID selection, status, actual ink list/raw IDs,
+      unknown ink percentages, native paper-count, ecblp FIFO discovery.
+      See current-usb.json. No print or maintenance command was sent.
+PASS: final native GUI stayed running in a real X11/XWayland desktop with ecbd
+      stopped. See current-gui.txt. No maintenance button was pressed.
+PASS: CUPS remained active; temporary ecbd exited after read-only regression.
+
+NOT TESTED: network printers, other models, actual CUPS page output and
+maintenance/printing overlap, full NixOS module activation, aarch64 builds,
+new GUI maintenance interaction on hardware. Scheduling remained disabled.
+No cleaning was repeated for this work.
+
+The fresh-checkout and .work logs are local developer artifacts, not prerequisites
+or public installation instructions. The hardware regression created no commit/tag/Release. Source publication was
+later explicitly authorized by the user.
+
+License-notice follow-up — 2026-11-26:
+PASS: adapted upstream files carry a project modification notice and date;
+      original source archives and their hashes remain unchanged.
+PASS: added upstream-modification-notices CTest compares the adapted tree with
+      both retained tarballs and checks the installed modification manifest.
+PASS: flake checks after this addition (five utility CTests, one backend CTest).
+No additional hardware maintenance or printing was needed for notice changes.

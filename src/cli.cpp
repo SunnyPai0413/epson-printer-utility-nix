@@ -2,108 +2,67 @@
 #include <QCoreApplication>
 #include <QCommandLineParser>
 #include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
 #include <QTextStream>
-#include "EPSPrinterController.h"
-
-namespace {
-const char *stateName(int state) {
-    switch (state) {
-    case EPS_PRNST_IDLE: return "idle";
-    case EPS_PRNST_BUSY: return "busy";
-    case EPS_PRNST_PRINTING: return "printing";
-    case EPS_PRNST_CANCELLING: return "cancelling";
-    case EPS_PRNST_ERROR: return "error";
-    default: return "unknown";
-    }
-}
-const char *errorName(int error) {
-    switch (error) {
-    case EPS_PRNERR_NOERROR: return "none";
-    case EPS_PRNERR_PAPEROUT: return "paper-out";
-    case EPS_PRNERR_PAPERJAM: return "paper-jam";
-    case EPS_PRNERR_INKOUT: return "ink-out";
-    case EPS_PRNERR_COVEROPEN: return "cover-open";
-    default: return "device-error";
-    }
-}
-QJsonArray sixInks(const EPS_INK_INFO &ink) {
-    // Use Epson color IDs, including its photo/matte black variants; never slot order.
-    const char *keys[] = {"black", "cyan", "magenta", "yellow", "light-cyan", "light-magenta"};
-    const char *labels[] = {"黑", "青", "品红", "黄", "浅青", "浅品红"};
-    QJsonArray out;
-    for (int color = 0; color < 6; ++color) {
-        QJsonValue value = QJsonValue::Null;
-        QString reason = "missing-color-id";
-        int matches = 0;
-        QJsonValue deviceColor = QJsonValue::Null, raw = QJsonValue::Null, nativeStatus = QJsonValue::Null;
-        for (int i = 0; i < qBound(0, ink.number, EPS_INK_NUM); ++i) {
-            const int id = ink.colors[i];
-            const bool black = color == EPS_COLOR_BLACK &&
-                (id == EPS_COLOR_PHOTOBLACK || id == EPS_COLOR_MATTEBLACK || id == EPS_COLOR_BLACK2);
-            if (id != color && !black) continue;
-            ++matches;
-            deviceColor = id; raw = ink.remaining[i]; nativeStatus = ink.status[i];
-            reason = ink.showInkInfo ? "device-value-unavailable" : "ink-info-disabled-by-device";
-            if (ink.showInkInfo && ink.status[i] >= 0 && ink.remaining[i] >= 0 && ink.remaining[i] <= 100) {
-                value = ink.remaining[i]; reason = "device-reported";
-            }
-        }
-        if (matches > 1) { value = QJsonValue::Null; reason = "ambiguous-color-id"; }
-        out.append(QJsonObject{{"color", keys[color]}, {"label", QString::fromUtf8(labels[color])},
-                               {"reported_percent", value}, {"source", reason}, {"device_color_code", deviceColor},
-                               {"reported_raw", raw}, {"native_ink_status", nativeStatus}});
-    }
-    return out;
-}
-}
+#include "native-report.h"
 
 int main(int argc, char **argv) {
     QCoreApplication app(argc, argv);
     app.setApplicationName("epson-printer-cli");
-    app.setApplicationVersion("1.1.3");
+    app.setApplicationVersion(EPSON_PROJECT_VERSION);
     QCommandLineParser args;
-    args.setApplicationDescription("Native Epson USB utility. Values are device reports, not actual liquid levels.");
+    args.setApplicationDescription("Native Epson USB/network utility. Ink values are device reports, not measured liquid levels.");
     args.addHelpOption(); args.addVersionOption();
-    args.addPositionalArgument("command", "status | ink | nozzle-check | clean");
-    QCommandLineOption device("device", "Exact discovered model name (including '(USB)'), USB, or auto (one matching printer).", "selector", "auto");
-    QCommandLineOption json("json", "Emit JSON, including null for unknown ink values.");
-    QCommandLineOption scheduled("scheduled", "For nozzle-check only: log skips, return success, never retry or queue.");
+    args.addPositionalArgument("command", "devices | status | ink | paper-count | nozzle-check | clean");
+    QCommandLineOption device("device", "Native discovered ID or address, exact model, USB, or auto (one matching printer).", "selector", "auto");
+    QCommandLineOption connection("connection", "Discovery scope: all, usb, network. USB selectors default to usb.", "scope");
+    QCommandLineOption json("json", "Emit schema 2 JSON; unknown values are null or an empty ink list.");
+    QCommandLineOption scheduled("scheduled", "For nozzle-check only: skip offline/busy/locked devices, never retry or queue.");
     QCommandLineOption confirm("confirm-clean", "Explicitly authorize one ordinary head cleaning.");
-    args.addOptions({device, json, scheduled, confirm});
+    args.addOptions({device, connection, json, scheduled, confirm});
     args.process(app);
-    const QStringList commands = {"status", "ink", "nozzle-check", "clean"};
+    const QStringList commands = {"devices", "status", "ink", "paper-count", "nozzle-check", "clean"};
     const QString command = args.positionalArguments().value(0);
+    QString scope = args.isSet(connection) ? args.value(connection) : QString::fromLocal8Bit(qgetenv("EPSON_CONNECTION"));
+    if (scope.isEmpty()) scope = args.value(device).startsWith("USB") ? "usb" : "all";
     if (args.positionalArguments().size() != 1 || !commands.contains(command) ||
+        !QStringList({"all", "usb", "network"}).contains(scope) ||
         (args.isSet(scheduled) && command != "nozzle-check") ||
         (command == "clean" && !args.isSet(confirm))) {
-        QTextStream(stderr) << "Expected one of status, ink, nozzle-check, clean. clean requires --confirm-clean.\n";
+        QTextStream(stderr) << "Expected devices, status, ink, paper-count, nozzle-check, or clean. clean requires --confirm-clean; --connection is all, usb, or network.\n";
         return 2;
     }
+    qputenv("EPSON_CONNECTION", scope.toLocal8Bit());
     const bool maintenance = command == "nozzle-check" || command == "clean";
-    QJsonObject result{{"command", command}, {"device", args.value(device)}, {"status", "unknown"},
-                       {"error", "unknown"}, {"outcome", "unknown"}};
+    QJsonObject result{{"schema_version", 2}, {"project_version", EPSON_PROJECT_VERSION},
+        {"upstream_utility_version", "1.1.3"}, {"upstream_backend_version", "1.3.1"},
+        {"command", command}, {"device", args.value(device)}, {"status", "unknown"},
+        {"error", "unknown"}, {"communication", "unknown"}, {"warnings", QJsonArray()}, {"outcome", "unknown"}};
     EPS_INK_INFO ink = {};
     auto finish = [&](const QString &outcome, const QString &reason, int code) {
         result["outcome"] = outcome; result["reason"] = reason;
-        if (command == "ink") result["ink"] = sixInks(ink);
+        if (command == "ink") result["ink"] = epson::inks(ink);
         if (args.isSet(json)) {
             QTextStream(stdout) << QJsonDocument(result).toJson(QJsonDocument::Compact) << '\n';
         } else {
             QTextStream out(stdout);
             out << "device=" << result["device"].toString() << " status=" << result["status"].toString()
                 << " error=" << result["error"].toString() << " outcome=" << outcome << " reason=" << reason << '\n';
+            for (auto v : result["warnings"].toArray()) out << "warning=" << v.toString() << '\n';
+            if (command == "devices") for (auto entry : result["devices"].toArray()) {
+                const auto row = entry.toObject();
+                out << row["id"].toString() << '\t' << row["model"].toString() << '\t' << row["location"].toString() << '\n';
+            }
             if (command == "ink") {
-                for (const auto entry : sixInks(ink)) {
+                if (ink.number == 0) out << "Ink: unknown (no color IDs available)\n";
+                for (auto entry : epson::inks(ink)) {
                     const auto row = entry.toObject();
-                    out << row["label"].toString() << " (" << row["color"].toString() << "): ";
-                    if (row["reported_percent"].isNull()) out << QString::fromUtf8("未知");
+                    out << row["color"].toString() << " [ID " << row["device_color_code"].toInt() << "]: ";
+                    if (row["reported_percent"].isNull()) out << "unknown";
                     else out << row["reported_percent"].toInt() << "% (device-reported)";
                     out << '\n';
                 }
-                out << "Device-reported values; these are not measurements of actual liquid levels.\n";
             }
+            if (command == "paper-count") out << QJsonDocument(result["paper_count"].toObject()).toJson(QJsonDocument::Compact) << '\n';
         }
         EPSPrinterController::ReleaseInstance();
         return code;
@@ -115,30 +74,43 @@ int main(int argc, char **argv) {
     if (!controller->InitializeCommonLib()) return skip("initialization-failed");
     controller->StartFindPrinter();
     QVector<EPS_PRINTER> matches;
+    QJsonArray devices;
     for (const auto &printer : controller->GetPrinterList()) {
-        if (printer.protocol != EPS_PROTOCOL_USB) continue;
-        const QString name = QString::fromLocal8Bit(printer.modelName);
-        if (args.value(device) == "auto" || args.value(device) == "USB" || args.value(device) == name)
-            matches.append(printer);
+        if (!epson::matches(printer, args.value(device))) continue;
+        matches.append(printer); devices.append(epson::device(printer));
     }
+    if (command == "devices") { result["devices"] = devices; return finish("reported", "discovery-complete", 0); }
     if (matches.isEmpty()) return skip("offline-or-device-not-matched");
     if (matches.size() != 1) return skip("ambiguous-device");
     const auto printer = matches.first();
     result["device"] = QString::fromLocal8Bit(printer.modelName);
-    if (!controller->ConnectToPrinter(result["device"].toString(), QString::fromLocal8Bit(printer.printerID)))
-        return skip("connect-failed");
+    result["device_info"] = epson::device(printer);
+    auto communicationFailure = [&](const QString &reason) {
+        result["communication"] = "failed"; result["error"] = "communication-error";
+        return skip(reason);
+    };
+    if (!controller->ConnectToPrinter(result["device"].toString(), epson::printerId(printer)))
+        return communicationFailure("connect-failed");
     EPS_STATUS status = {};
-    if (!controller->GetCurrentPrinterStatus(&status, &ink)) return skip("status-unavailable");
-    result["status"] = stateName(status.printerStatus);
-    result["error"] = errorName(status.errorCode);
+    if (!controller->GetCurrentPrinterStatus(&status, &ink)) return communicationFailure("status-unavailable");
+    result["communication"] = "ok";
+    result["status"] = epson::stateName(status.printerStatus);
+    result["error"] = epson::errorName(status.errorCode);
     result["status_code"] = status.printerStatus;
     result["error_code"] = status.errorCode;
+    result["warnings"] = epson::warnings(status.warnings);
+    result["warning_mask"] = int(status.warnings);
+    result["paper_count"] = epson::paperCount(status.paper_count);
+    if (command == "paper-count") {
+        bool available = false;
+        for (const auto value : result["paper_count"].toObject()) if (value.isDouble()) available = true;
+        return available ? finish("reported", "device-reported-feed-counters", 0) : skip("paper-count-not-supported-or-unavailable");
+    }
     if (!maintenance) return finish("reported", "device-reported", 0);
     if (status.errorCode == EPS_PRNERR_PAPEROUT) return skip("paper-out");
-    if (status.printerStatus != EPS_PRNST_IDLE) return skip(stateName(status.printerStatus));
-    if (status.errorCode != EPS_PRNERR_NOERROR) return skip(errorName(status.errorCode));
-    // The controller obtains the shared GUI/CLI lock and checks status again.
-    const EPS_ERR_CODE code = command == "clean" ? controller->HeadCleanPrinter() : controller->NozzleCheckPrinter();
+    if (status.printerStatus != EPS_PRNST_IDLE) return skip(epson::stateName(status.printerStatus));
+    if (status.errorCode != EPS_PRNERR_NOERROR) return skip(epson::errorName(status.errorCode));
+    const EPS_ERR_CODE code = controller->MaintainPrinter(result["device"].toString(), epson::printerId(printer), command == "clean");
     result["native_result"] = code;
     if (code == EPS_ERR_PRINTER_NOT_USEFUL) return skip("lock-unavailable-or-device-no-longer-idle");
     if (code != EPS_ERR_NONE)

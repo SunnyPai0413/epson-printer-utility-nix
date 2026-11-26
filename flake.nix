@@ -1,5 +1,5 @@
 {
-  description = "Native Epson Printer Utility and USB maintenance for NixOS";
+  description = "Native Epson USB/network utility with optional CUPS integration for NixOS";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/718f670e845328e9c2cecdd832835712b2cbd065";
 
@@ -11,10 +11,10 @@
     in {
       packages = forAllSystems packagesFor;
       apps = forAllSystems (system: let p = self.packages.${system}; in {
-        default = { type = "app"; program = "${p.epson-printer-utility}/bin/epson-printer-utility"; };
+        default = { type = "app"; program = "${p.epson-printer-utility}/bin/epson-printer-utility"; meta = { description = "Native Epson USB/network GUI"; }; };
         gui = self.apps.${system}.default;
-        cli = { type = "app"; program = "${p.epson-printer-utility}/bin/epson-printer-cli"; };
-        ecbd = { type = "app"; program = "${p.epson-backend}/bin/ecbd"; };
+        cli = { type = "app"; program = "${p.epson-printer-utility}/bin/epson-printer-cli"; meta = { description = "Native Epson maintenance CLI"; }; };
+        ecbd = { type = "app"; program = "${p.epson-backend}/bin/ecbd"; meta = { description = "Epson USB printing and utility daemon"; }; };
       });
       devShells = forAllSystems (system: let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -28,6 +28,7 @@
         p = self.packages.${system};
       in {
         inherit (p) epson-printer-utility epson-backend;
+        sources = import ./tests/sources.nix { inherit pkgs; };
         module = import ./tests/module.nix { inherit nixpkgs system; module = self.nixosModules.default; };
       });
       nixosModules.default = import ./nix/module.nix;

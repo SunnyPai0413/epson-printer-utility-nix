@@ -1,0 +1,219 @@
+{
+  "cups_active_before": true,
+  "maintenance_commands_sent": 0,
+  "devices": {
+    "command": "devices",
+    "communication": "unknown",
+    "device": "auto",
+    "devices": [
+      {
+        "connection": "usb",
+        "id": "USB",
+        "location": "",
+        "model": "L805 Series (USB)",
+        "protocol": "usb",
+        "serial": ""
+      }
+    ],
+    "error": "unknown",
+    "outcome": "reported",
+    "project_version": "0.2.0",
+    "reason": "discovery-complete",
+    "schema_version": 2,
+    "status": "unknown",
+    "upstream_backend_version": "1.3.1",
+    "upstream_utility_version": "1.1.3",
+    "warnings": []
+  },
+  "status": {
+    "exit_code": 0,
+    "report": {
+      "command": "status",
+      "communication": "ok",
+      "device": "L805 Series (USB)",
+      "device_info": {
+        "connection": "usb",
+        "id": "USB",
+        "location": "",
+        "model": "L805 Series (USB)",
+        "protocol": "usb",
+        "serial": ""
+      },
+      "error": "none",
+      "error_code": 0,
+      "outcome": "reported",
+      "paper_count": {
+        "adf": null,
+        "blank": 77,
+        "color": 83594,
+        "color_borderless": 2177,
+        "meaning": "native-paper-feed-counters; not successful-print-pages",
+        "monochrome": 1497,
+        "monochrome_borderless": 0,
+        "total": 85091
+      },
+      "project_version": "0.2.0",
+      "reason": "device-reported",
+      "schema_version": 2,
+      "status": "idle",
+      "status_code": 0,
+      "upstream_backend_version": "1.3.1",
+      "upstream_utility_version": "1.1.3",
+      "warning_mask": 0,
+      "warnings": []
+    }
+  },
+  "ink": {
+    "exit_code": 0,
+    "report": {
+      "command": "ink",
+      "communication": "ok",
+      "device": "L805 Series (USB)",
+      "device_info": {
+        "connection": "usb",
+        "id": "USB",
+        "location": "",
+        "model": "L805 Series (USB)",
+        "protocol": "usb",
+        "serial": ""
+      },
+      "error": "none",
+      "error_code": 0,
+      "ink": [
+        {
+          "color": "cyan",
+          "color_id_format": "st2-type-color",
+          "device_color_code": 1,
+          "index": 0,
+          "label": "cyan",
+          "native_ink_status": -4,
+          "reported_color_id": 769,
+          "reported_percent": null,
+          "reported_raw": 105,
+          "source": "ink-info-disabled-by-device"
+        },
+        {
+          "color": "magenta",
+          "color_id_format": "st2-type-color",
+          "device_color_code": 2,
+          "index": 1,
+          "label": "magenta",
+          "native_ink_status": -4,
+          "reported_color_id": 1026,
+          "reported_percent": null,
+          "reported_raw": 105,
+          "source": "ink-info-disabled-by-device"
+        },
+        {
+          "color": "light-magenta",
+          "color_id_format": "st2-type-color",
+          "device_color_code": 5,
+          "index": 2,
+          "label": "light-magenta",
+          "native_ink_status": -4,
+          "reported_color_id": 1797,
+          "reported_percent": null,
+          "reported_raw": 105,
+          "source": "ink-info-disabled-by-device"
+        },
+        {
+          "color": "light-cyan",
+          "color_id_format": "st2-type-color",
+          "device_color_code": 4,
+          "index": 3,
+          "label": "light-cyan",
+          "native_ink_status": -4,
+          "reported_color_id": 1540,
+          "reported_percent": null,
+          "reported_raw": 105,
+          "source": "ink-info-disabled-by-device"
+        },
+        {
+          "color": "black",
+          "color_id_format": "st2-type-color",
+          "device_color_code": 0,
+          "index": 4,
+          "label": "black",
+          "native_ink_status": -4,
+          "reported_color_id": 256,
+          "reported_percent": null,
+          "reported_raw": 105,
+          "source": "ink-info-disabled-by-device"
+        },
+        {
+          "color": "yellow",
+          "color_id_format": "st2-type-color",
+          "device_color_code": 3,
+          "index": 5,
+          "label": "yellow",
+          "native_ink_status": -4,
+          "reported_color_id": 1283,
+          "reported_percent": null,
+          "reported_raw": 105,
+          "source": "ink-info-disabled-by-device"
+        }
+      ],
+      "outcome": "reported",
+      "paper_count": {
+        "adf": null,
+        "blank": 77,
+        "color": 83594,
+        "color_borderless": 2177,
+        "meaning": "native-paper-feed-counters; not successful-print-pages",
+        "monochrome": 1497,
+        "monochrome_borderless": 0,
+        "total": 85091
+      },
+      "project_version": "0.2.0",
+      "reason": "device-reported",
+      "schema_version": 2,
+      "status": "idle",
+      "status_code": 0,
+      "upstream_backend_version": "1.3.1",
+      "upstream_utility_version": "1.1.3",
+      "warning_mask": 0,
+      "warnings": []
+    }
+  },
+  "paper-count": {
+    "exit_code": 0,
+    "report": {
+      "command": "paper-count",
+      "communication": "ok",
+      "device": "L805 Series (USB)",
+      "device_info": {
+        "connection": "usb",
+        "id": "USB",
+        "location": "",
+        "model": "L805 Series (USB)",
+        "protocol": "usb",
+        "serial": ""
+      },
+      "error": "none",
+      "error_code": 0,
+      "outcome": "reported",
+      "paper_count": {
+        "adf": null,
+        "blank": 77,
+        "color": 83594,
+        "color_borderless": 2177,
+        "meaning": "native-paper-feed-counters; not successful-print-pages",
+        "monochrome": 1497,
+        "monochrome_borderless": 0,
+        "total": 85091
+      },
+      "project_version": "0.2.0",
+      "reason": "device-reported-feed-counters",
+      "schema_version": 2,
+      "status": "idle",
+      "status_code": 0,
+      "upstream_backend_version": "1.3.1",
+      "upstream_utility_version": "1.1.3",
+      "warning_mask": 0,
+      "warnings": []
+    }
+  },
+  "ecblp_discovery": "direct ecblp:/run/epson-printer-utility/ecblp0 \"Epson Backend\" \"Epson USB Printer (ecbd)\"",
+  "temporary_backend_stopped": true,
+  "cups_active_after": true
+}

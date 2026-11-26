@@ -1,6 +1,6 @@
-building '/nix/store/6r8yillfddfyi0iq5ywmhriy8d9kn1vx-nix-shell-env.drv'...
+building '/nix/store/<hash>-nix-shell-env.drv'...
 /nix/store/v4m910fin3csvzhv8pq6aiverror: interrupted by the user
 
-/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/c++
-/nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/bin/qmake
-/nix/store/jy00n3jp5xj8s40n1fbldmkcr5n7avxc-python3-3.13.15/bin/python3
+/nix/store/<hash>-gcc-wrapper-15.3.0/bin/c++
+/nix/store/<hash>-qtbase-5.15.19-dev/bin/qmake
+/nix/store/<hash>-python3-3.13.15/bin/python3

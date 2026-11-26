@@ -1,0 +1,5 @@
+Project 0.2.0, 2026-11-26 Asia/Singapore
+Real X11/XWayland desktop smoke check, ecbd stopped, USB discovery scope.
+WM_NAME(STRING) = "Epson Printer Utility"
+WM_CLASS(STRING) = "epson-printer-utility", "EpsonPrinterUtility"
+Window remained running; no maintenance button was pressed.
