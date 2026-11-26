@@ -1,0 +1,557 @@
+these 6 derivations will be built:
+  /nix/store/0xp78s6f15xcmwczmh1g11ddnbwqmsfd-epson-printer-utility-1.1.3.drv
+  /nix/store/j5a3i2smpfm84frvcd1vwkzfcm864w0c-epson-backend-1.3.1.drv
+  /nix/store/b2kda04lirkfhyvhzg0cqfrcisba73f9-unit-ecbd.service.drv
+  /nix/store/zk7z5mrl1i8f9c4p8y4kf9g6j2mi0fdj-unit-epson-nozzle-check.service.drv
+  /nix/store/nz0hc00y3552c4dgnl02p0w0323wdkv2-epson-module-check.drv
+  /nix/store/qx3spvjs66pnl6rc0bpaz4dbs0axy491-epson-utility-suite-1.1.3.drv
+building '/nix/store/j5a3i2smpfm84frvcd1vwkzfcm864w0c-epson-backend-1.3.1.drv'...
+building '/nix/store/0xp78s6f15xcmwczmh1g11ddnbwqmsfd-epson-printer-utility-1.1.3.drv'...
+epson-backend> Using udevCheckHook
+epson-backend> Running phase: unpackPhase
+epson-backend> unpacking source archive /nix/store/zfvl1w7iwyysw4r80dkk6jq9dikmf9q5-source
+epson-backend> source root is source
+epson-backend> setting SOURCE_DATE_EPOCH to timestamp 1706667007 of file "source/epson-backend/daemon/epmnt.c"
+epson-backend> Running phase: patchPhase
+epson-backend> Running phase: updateAutotoolsGnuConfigScriptsPhase
+epson-backend> Running phase: configurePhase
+epson-backend> cmake flags: -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_INSTALL_LOCALEDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/locale -DCMAKE_INSTALL_LIBEXECDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/libexec -DCMAKE_INSTALL_LIBDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/lib -DCMAKE_INSTALL_DOCDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/doc/epson-native -DCMAKE_INSTALL_INFODIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/info -DCMAKE_INSTALL_MANDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/man -DCMAKE_INSTALL_INCLUDEDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/include -DCMAKE_INSTALL_SBINDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/sbin -DCMAKE_INSTALL_BINDIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/bin -DCMAKE_INSTALL_NAME_DIR=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/lib -DCMAKE_STRIP=/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/strip -DCMAKE_RANLIB=/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/ranlib -DCMAKE_AR=/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/ar -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=/nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1 -DBUILD_UTILITY=OFF
+epson-backend> -- The C compiler identification is GNU 15.3.0
+epson-backend> -- The CXX compiler identification is GNU 15.3.0
+epson-backend> -- Detecting C compiler ABI info
+epson-printer-utility> Running phase: qtPreHook
+epson-printer-utility> Running phase: unpackPhase
+epson-printer-utility> unpacking source archive /nix/store/zfvl1w7iwyysw4r80dkk6jq9dikmf9q5-source
+epson-printer-utility> source root is source
+epson-printer-utility> setting SOURCE_DATE_EPOCH to timestamp 1706667007 of file "source/epson-backend/daemon/epmnt.c"
+epson-backend> -- Detecting C compiler ABI info - done
+epson-printer-utility> Running phase: patchPhase
+epson-printer-utility> Running phase: updateAutotoolsGnuConfigScriptsPhase
+epson-backend> -- Check for working C compiler: /nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/gcc - skipped
+epson-backend> -- Detecting C compile features
+epson-backend> -- Detecting C compile features - done
+epson-printer-utility> Running phase: configurePhase
+epson-printer-utility> cmake flags: -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LOCALEDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/locale -DCMAKE_INSTALL_LIBEXECDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/libexec -DCMAKE_INSTALL_LIBDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/lib -DCMAKE_INSTALL_DOCDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/doc/epson-native -DCMAKE_INSTALL_INFODIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/info -DCMAKE_INSTALL_MANDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/man -DCMAKE_INSTALL_INCLUDEDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/include -DCMAKE_INSTALL_SBINDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/sbin -DCMAKE_INSTALL_BINDIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin -DCMAKE_INSTALL_NAME_DIR=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/lib -DCMAKE_STRIP=/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/strip -DCMAKE_RANLIB=/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/ranlib -DCMAKE_AR=/nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/ar -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3 -DBUILD_BACKEND=OFF
+epson-backend> -- Detecting CXX compiler ABI info
+epson-backend> -- Detecting CXX compiler ABI info - done
+epson-backend> -- Check for working CXX compiler: /nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/g++ - skipped
+epson-backend> -- Detecting CXX compile features
+epson-backend> -- Detecting CXX compile features - done
+epson-printer-utility> -- The C compiler identification is GNU 15.3.0
+epson-backend> -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+epson-backend> -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+epson-backend> -- Found Threads: TRUE
+epson-backend> -- Found PkgConfig: /nix/store/viqf3122g0bn0ahqgns1yg52axx9p531-pkg-config-wrapper-0.29.2/bin/pkg-config (found version "0.29.2")
+epson-backend> -- Checking for module 'libusb-1.0'
+epson-backend> --   Found libusb-1.0, version 1.0.29
+epson-backend> -- Configuring done (0.7s)
+epson-backend> -- Generating done (0.0s)
+epson-backend> CMake Warning:
+epson-backend>   Manually-specified variables were not used by the project:
+epson-backend> 
+epson-backend>     CMAKE_EXPORT_NO_PACKAGE_REGISTRY
+epson-backend> 
+epson-backend> 
+epson-backend> -- Build files have been written to: /build/source/build
+epson-backend> cmake: enabled parallel building
+epson-backend> cmake: enabled parallel installing
+epson-backend> Running phase: buildPhase
+epson-backend> build flags: -j8 SHELL=/nix/store/jnyfsf2mp08d1xyz2m72ic2vz2kcx0sd-bash-5.3p9/bin/bash
+epson-printer-utility> -- The CXX compiler identification is GNU 15.3.0
+epson-printer-utility> -- Detecting C compiler ABI info
+epson-backend> [ 18%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd_datatrans.c.o
+epson-backend> [ 18%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd_signal.c.o
+epson-backend> [ 27%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd_wrapper.c.o
+epson-backend> [ 36%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd.c.o
+epson-backend> [ 63%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd_comserv.c.o
+epson-backend> [ 63%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd_setup.c.o
+epson-backend> [ 63%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/cbtd_thread.c.o
+epson-backend> [ 72%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/ecbteg.c.o
+epson-backend> /build/source/epson-backend/daemon/cbtd_datatrans.c: In function 'datatrans_work':
+epson-backend> /build/source/epson-backend/daemon/cbtd_datatrans.c:214:65: warning: implicit declaration of function 'Sleep'; did you mean 'sleep'? [-Wimplicit-function-declaration]
+epson-backend>   214 |                                                                 Sleep(p_info->sleepTime);
+epson-backend>       |                                                                 ^~~~~
+epson-backend>       |                                                                 sleep
+epson-backend> [ 81%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/daemon_osfunc.c.o
+epson-backend> /build/source/epson-backend/daemon/ecbteg.c: In function 'ECBT_Write':
+epson-backend> /build/source/epson-backend/daemon/ecbteg.c:852:21: warning: implicit declaration of function 'is_sysflags' [-Wimplicit-function-declaration]
+epson-backend>   852 |                 if (is_sysflags (p_info, ST_JOB_CANCEL) && SID == 0x40) {//Data channel
+epson-backend>       |                     ^~~~~~~~~~~
+epson-backend> /build/source/epson-backend/daemon/cbtd_comserv.c: In function 'nozzlecheck_recept':
+epson-backend> /build/source/epson-backend/daemon/cbtd_comserv.c:644:9: warning: implicit declaration of function 'epsMakeMainteCmd' [-Wimplicit-function-declaration]
+epson-backend>   644 |         epsMakeMainteCmd(EPS_MNT_NOZZLE, buffer, &bufsize, atoi(inputslot), atoi(mediatype), atoi(pagesize));
+epson-backend>       |         ^~~~~~~~~~~~~~~~
+epson-backend> [ 90%] Building C object CMakeFiles/ecbd.dir/epson-backend/daemon/epmnt.c.o
+epson-backend> /build/source/epson-backend/daemon/cbtd_comserv.c: In function 'getdeviceid_recept':
+epson-backend> /build/source/epson-backend/daemon/cbtd_comserv.c:690:9: warning: implicit declaration of function 'get_device_id' [-Wimplicit-function-declaration]
+epson-backend>   690 |         get_device_id (device_id);
+epson-backend>       |         ^~~~~~~~~~~~~
+epson-backend> /build/source/epson-backend/daemon/cbtd_comserv.c: In function 'setsleeptimer_recept':
+epson-backend> /build/source/epson-backend/daemon/cbtd_comserv.c:705:17: warning: implicit declaration of function 'epsMakeSleepTimerCmd' [-Wimplicit-function-declaration]
+epson-backend>   705 |                 epsMakeSleepTimerCmd(EPS_MNT_SET_D4_SLEEPTIMER, buffer, &bufsize, sleeptimer);
+epson-backend>       |                 ^~~~~~~~~~~~~~~~~~~~
+epson-printer-utility> -- Detecting C compiler ABI info - done
+epson-printer-utility> -- Check for working C compiler: /nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/gcc - skipped
+epson-printer-utility> -- Detecting C compile features
+epson-printer-utility> -- Detecting C compile features - done
+epson-backend> [100%] Linking C executable ecbd
+epson-backend> [100%] Built target ecbd
+epson-backend> Running phase: installPhase
+epson-backend> install flags: -j8 SHELL=/nix/store/jnyfsf2mp08d1xyz2m72ic2vz2kcx0sd-bash-5.3p9/bin/bash install
+epson-backend> [100%] Built target ecbd
+epson-backend> Install the project...
+epson-backend> -- Install configuration: "Release"
+epson-backend> -- Installing: /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/bin/ecbd
+epson-backend> -- Installing: /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/doc/epson-backend/COPYING
+epson-backend> -- Installing: /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/doc/epson-backend/AUTHORS
+epson-backend> -- Installing: /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/share/doc/epson-backend/README
+epson-backend> Running phase: fixupPhase
+epson-backend> shrinking RPATHs of ELF executables and libraries in /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1
+epson-backend> shrinking /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/bin/ecbd
+epson-backend> checking for references to /build/ in /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1...
+epson-backend> patching script interpreter paths in /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1
+epson-backend> stripping (with command strip and flags -S -p) in  /nix/store/kv02bgcsrbsda4ql5cdhqkirs1v88dmz-epson-backend-1.3.1/bin
+building '/nix/store/b2kda04lirkfhyvhzg0cqfrcisba73f9-unit-ecbd.service.drv'...
+epson-printer-utility> -- Detecting CXX compiler ABI info
+epson-printer-utility> -- Detecting CXX compiler ABI info - done
+epson-printer-utility> -- Check for working CXX compiler: /nix/store/dy6j7267wrgjlr2z748sbx83zj16vs3c-gcc-wrapper-15.3.0/bin/g++ - skipped
+epson-printer-utility> -- Detecting CXX compile features
+epson-printer-utility> -- Detecting CXX compile features - done
+epson-printer-utility> -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+epson-printer-utility> -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+epson-printer-utility> -- Found Threads: TRUE
+epson-printer-utility> -- Found PkgConfig: /nix/store/viqf3122g0bn0ahqgns1yg52axx9p531-pkg-config-wrapper-0.29.2/bin/pkg-config (found version "0.29.2")
+epson-printer-utility> -- Found Python3: /nix/store/jy00n3jp5xj8s40n1fbldmkcr5n7avxc-python3-3.13.15/bin/python3.13 (found version "3.13.15") found components: Interpreter
+epson-printer-utility> -- Configuring done (2.1s)
+epson-printer-utility> -- Generating done (0.0s)
+epson-printer-utility> CMake Warning:
+epson-printer-utility>   Manually-specified variables were not used by the project:
+epson-printer-utility> 
+epson-printer-utility>     CMAKE_EXPORT_NO_PACKAGE_REGISTRY
+epson-printer-utility> 
+epson-printer-utility> 
+epson-printer-utility> -- Build files have been written to: /build/source/build
+epson-printer-utility> cmake: enabled parallel building
+epson-printer-utility> cmake: enabled parallel installing
+epson-printer-utility> Running phase: buildPhase
+epson-printer-utility> build flags: -j8 SHELL=/nix/store/jnyfsf2mp08d1xyz2m72ic2vz2kcx0sd-bash-5.3p9/bin/bash
+epson-printer-utility> [  0%] Built target parser-test_autogen_timestamp_deps
+epson-printer-utility> [  0%] Built target EPSCommonLib_autogen_timestamp_deps
+epson-printer-utility> [  1%] Automatic MOC for target parser-test
+epson-printer-utility> [  2%] Automatic MOC for target EPSCommonLib
+epson-printer-utility> [  2%] Built target parser-test_autogen
+epson-printer-utility> [  4%] Building CXX object CMakeFiles/parser-test.dir/tests/parser.cpp.o
+epson-printer-utility> [  7%] Building CXX object CMakeFiles/parser-test.dir/parser-test_autogen/mocs_compilation.cpp.o
+epson-printer-utility> [  7%] Building CXX object CMakeFiles/parser-test.dir/epson-printer-utility/BackendLib/backend_api.c.o
+epson-printer-utility> [  7%] Built target EPSCommonLib_autogen
+epson-printer-utility> [ 10%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-mem.c.o
+epson-printer-utility> [ 10%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-dbg.c.o
+epson-printer-utility> [ 11%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-closed.c.o
+epson-printer-utility> [ 15%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-cbt.c.o
+epson-printer-utility> [ 15%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-api.c.o
+epson-printer-utility> [ 15%] Building CXX object CMakeFiles/EPSCommonLib.dir/EPSCommonLib_autogen/mocs_compilation.cpp.o
+epson-printer-utility> [ 17%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c.o
+epson-printer-utility> [ 18%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-layout.c.o
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c: In function 'EPS_ERR_CODE serAnalyzeStatus(EPS_INT8*, EPS_UINT32, EPS_STATUS_INFO*)':
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c:745:41: warning: case label value exceeds maximum value for type [-Wswitch-outside-range]
+epson-printer-utility>   745 |                                         case 0x87: pstInfo->nError = EPS_PRNERR_PAPER_LOAD_INCORRECT;   break;
+epson-printer-utility>       |                                         ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c:746:41: warning: case label value exceeds maximum value for type [-Wswitch-outside-range]
+epson-printer-utility>   746 |                                         case 0x88: pstInfo->nError = EPS_PRNERR_CANNOT_NOZZELE_CLOGGING;break;
+epson-printer-utility>       |                                         ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c:747:41: warning: case label value exceeds maximum value for type [-Wswitch-outside-range]
+epson-printer-utility>   747 |                                         case 0x89: pstInfo->nError = EPS_PRNERR_CANNOT_NOZZELE_CLOGGING;break;
+epson-printer-utility>       |                                         ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c:748:41: warning: case label value exceeds maximum value for type [-Wswitch-outside-range]
+epson-printer-utility>   748 |                                         case 0x8B: pstInfo->nError = EPS_PRNERR_NOZZELECHECK_RECOMMEND; break;
+epson-printer-utility>       |                                         ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-services.c:749:41: warning: case label value exceeds maximum value for type [-Wswitch-outside-range]
+epson-printer-utility>   749 |                                         case 0x8C: pstInfo->nError = EPS_PRNERR_NOZZELECHECK_RECOMMEND; break;
+epson-printer-utility>       |                                         ^~~~
+epson-printer-utility> [ 20%] Linking CXX executable parser-test
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-api.c: In function 'EPS_ERR_CODE GetJpgMax(EPS_PRINTER_INN*)':
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-escpr-api.c:5821:34: warning: statement will never be executed [-Wswitch-unreachable]
+epson-printer-utility>  5821 |                 if(pmString[pmIdx] == 0x0D && pmString[pmIdx+1] == 0x0A) {
+epson-printer-utility>       |                    ~~~~~~~~~~~~~~^
+epson-printer-utility> [ 23%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-net-raw.c.o
+epson-printer-utility> [ 23%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-net-lpr.c.o
+epson-printer-utility> [ 24%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-net-snmp.c.o
+epson-printer-utility> [ 26%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-protocol.c.o
+epson-printer-utility> [ 27%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/epson-usb.c.o
+epson-printer-utility> [ 28%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c.o
+epson-printer-utility> [ 30%] Built target parser-test
+epson-printer-utility> [ 31%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/linux/XAsyncSocket.cpp.o
+epson-printer-utility> [ 33%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/linux/linux_cmn.c.o
+epson-printer-utility> In file included from /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:48:
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/XAsyncSocket.h:6:9: warning: 'ETIMEDOUT' redefined
+epson-printer-utility>     6 | #define ETIMEDOUT -2
+epson-printer-utility>       |         ^~~~~~~~~
+epson-printer-utility> In file included from /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/asm/errno.h:1,
+epson-printer-utility>                  from /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/linux/errno.h:1,
+epson-printer-utility>                  from /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/bits/errno.h:26,
+epson-printer-utility>                  from /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/errno.h:28,
+epson-printer-utility>                  from /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:43:
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/asm-generic/errno.h:93:9: note: this is the location of the previous definition
+epson-printer-utility>    93 | #define ETIMEDOUT       110     /* Connection timed out */
+epson-printer-utility>       |         ^~~~~~~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/XAsyncSocket.h:7:9: warning: 'errno' redefined
+epson-printer-utility>     7 | #define errno -3
+epson-printer-utility>       |         ^~~~~
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/errno.h:38:10: note: this is the location of the previous definition
+epson-printer-utility>    38 | # define errno (*__errno_location ())
+epson-printer-utility>       |          ^~~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/XAsyncSocket.h:9:9: warning: 'EINTR' redefined
+epson-printer-utility>     9 | #define EINTR 100
+epson-printer-utility>       |         ^~~~~
+epson-printer-utility> In file included from /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/asm-generic/errno.h:5:
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/asm-generic/errno-base.h:8:9: note: this is the location of the previous definition
+epson-printer-utility>     8 | #define EINTR            4      /* Interrupted system call */
+epson-printer-utility>       |         ^~~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/XAsyncSocket.h:10:9: warning: 'ECANCELED' redefined
+epson-printer-utility>    10 | #define ECANCELED 200
+epson-printer-utility>       |         ^~~~~~~~~
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/asm-generic/errno.h:109:9: note: this is the location of the previous definition
+epson-printer-utility>   109 | #define ECANCELED       125     /* Operation Canceled */
+epson-printer-utility>       |         ^~~~~~~~~
+epson-printer-utility> [ 34%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/linux/linux_net.c.o
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c: In function 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)':
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:389:48: warning: '%d' directive output may be truncated writing between 1 and 11 bytes into a region of size 9 [-Wformat-truncation=]
+epson-printer-utility>   389 |         snprintf(usb_path, MAX_PATH_LENGTH, "%s%d", PATH_TO_USB_BUS, i);
+epson-printer-utility>       |                                                ^~
+epson-printer-utility> In function 'EPS_BOOL FindDevice(EPS_INT32*, EPS_USB_DEVICE*)',
+epson-printer-utility>     inlined from 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)' at /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:109:19:
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:389:45: note: directive argument in the range [-2147483644, 19]
+epson-printer-utility>   389 |         snprintf(usb_path, MAX_PATH_LENGTH, "%s%d", PATH_TO_USB_BUS, i);
+epson-printer-utility>       |                                             ^~~~~~
+epson-printer-utility> In file included from /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/stdio.h:970,
+epson-printer-utility>                  from /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:35:
+epson-printer-utility> In function 'int snprintf(char*, size_t, const char*, ...)',
+epson-printer-utility>     inlined from 'EPS_BOOL FindDevice(EPS_INT32*, EPS_USB_DEVICE*)' at /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:389:17,
+epson-printer-utility>     inlined from 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)' at /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:109:19:
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/bits/stdio2.h:68:35: note: '__builtin___snprintf_chk' output between 13 and 23 bytes into a destination of size 20
+epson-printer-utility>    68 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+epson-printer-utility>       |          ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+epson-printer-utility>    69 |                                    __glibc_objsize (__s), __fmt,
+epson-printer-utility>       |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+epson-printer-utility>    70 |                                    __va_arg_pack ());
+epson-printer-utility>       |                                    ~~~~~~~~~~~~~~~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c: In function 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)':
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:120:64: warning: '%d' directive output may be truncated writing between 1 and 11 bytes into a region of size 9 [-Wformat-truncation=]
+epson-printer-utility>   120 |                         snprintf(usb_path, MAX_PATH_LENGTH, "%s%d", PATH_TO_USB_BUS, nCnt-1);
+epson-printer-utility>       |                                                                ^~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:120:61: note: directive argument in the range [-2147483644, 19]
+epson-printer-utility>   120 |                         snprintf(usb_path, MAX_PATH_LENGTH, "%s%d", PATH_TO_USB_BUS, nCnt-1);
+epson-printer-utility>       |                                                             ^~~~~~
+epson-printer-utility> In function 'int snprintf(char*, size_t, const char*, ...)',
+epson-printer-utility>     inlined from 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)' at /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:120:12:
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/bits/stdio2.h:68:35: note: '__builtin___snprintf_chk' output between 13 and 23 bytes into a destination of size 20
+epson-printer-utility>    68 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+epson-printer-utility>       |          ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+epson-printer-utility>    69 |                                    __glibc_objsize (__s), __fmt,
+epson-printer-utility>       |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+epson-printer-utility>    70 |                                    __va_arg_pack ());
+epson-printer-utility>       |                                    ~~~~~~~~~~~~~~~~~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c: In function 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)':
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:115:72: warning: '%d' directive output may be truncated writing between 1 and 11 bytes into a region of size 9 [-Wformat-truncation=]
+epson-printer-utility>   115 |                                 snprintf(usb_path, MAX_PATH_LENGTH, "%s%d", PATH_TO_USB_BUS, nCnt-1);
+epson-printer-utility>       |                                                                        ^~
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:115:69: note: directive argument in the range [-2147483644, 19]
+epson-printer-utility>   115 |                                 snprintf(usb_path, MAX_PATH_LENGTH, "%s%d", PATH_TO_USB_BUS, nCnt-1);
+epson-printer-utility>       |                                                                     ^~~~~~
+epson-printer-utility> In function 'int snprintf(char*, size_t, const char*, ...)',
+epson-printer-utility>     inlined from 'EPS_FILEDSC epsmpOpenPortal(const EPS_USB_DEVICE*)' at /build/source/epson-printer-utility/EPSCommonLib/epsmp/linux/epsmp-linux-portal-io.c:115:13:
+epson-printer-utility> /nix/store/sr08dm9x0fsa1mrzjrlb3csdcmilsraz-glibc-2.42-100-dev/include/bits/stdio2.h:68:35: note: '__builtin___snprintf_chk' output between 13 and 23 bytes into a destination of size 20
+epson-printer-utility>    68 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+epson-printer-utility>       |          ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+epson-printer-utility>    69 |                                    __glibc_objsize (__s), __fmt,
+epson-printer-utility>       |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+epson-printer-utility>    70 |                                    __va_arg_pack ());
+epson-printer-utility>       |                                    ~~~~~~~~~~~~~~~~~
+epson-printer-utility> [ 36%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-scale.c.o
+epson-printer-utility> [ 37%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-file-io.c.o
+epson-printer-utility> [ 39%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-image.c.o
+epson-printer-utility> [ 40%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-jpg.c.o
+epson-printer-utility> [ 42%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-print-io.c.o
+epson-printer-utility> [ 43%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-prn-parse.c.o
+epson-printer-utility> [ 44%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/epsmp/epsmp-rawimg.c.o
+epson-printer-utility> [ 46%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/EPSCommunicator.cpp.o
+epson-printer-utility> [ 47%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/BackendLib/backend_api.c.o
+epson-printer-utility> [ 49%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/BackendLib/ekpcom.c.o
+epson-printer-utility> [ 50%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/EPSReplyParser.cpp.o
+epson-printer-utility> [ 52%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/escpr-lib/src/err.c.o
+epson-printer-utility> [ 53%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPSCommonLib/EPSPrinterController.cpp.o
+epson-printer-utility> [ 55%] Building CXX object CMakeFiles/EPSCommonLib.dir/epson-printer-utility/EPUCommon/EThread.cpp.o
+epson-printer-utility> /build/source/epson-printer-utility/EPSCommonLib/EPSPrinterController.cpp:18:50: warning: 'QMutex::QMutex(RecursionMode)' is deprecated: Use QRecursiveMutex instead of a recursive QMutex [-Wdeprecated-declarations]
+epson-printer-utility>    18 | static QMutex nativeSocketMutex(QMutex::Recursive);
+epson-printer-utility>       |                                                  ^
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/QMutex:1,
+epson-printer-utility>                  from /build/source/epson-printer-utility/EPSCommonLib/../EPUCommon/EThread.h:16,
+epson-printer-utility>                  from /build/source/epson-printer-utility/EPSCommonLib/EPSCommunicator.h:31,
+epson-printer-utility>                  from /build/source/epson-printer-utility/EPSCommonLib/EPSPrinterController.h:16,
+epson-printer-utility>                  from /build/source/epson-printer-utility/EPSCommonLib/EPSPrinterController.cpp:12:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qmutex.h:159:14: note: declared here
+epson-printer-utility>   159 |     explicit QMutex(RecursionMode mode);
+epson-printer-utility>       |              ^~~~~~
+epson-printer-utility> [ 56%] Linking CXX static library libEPSCommonLib.a
+epson-printer-utility> [ 57%] Built target EPSCommonLib
+epson-printer-utility> [ 57%] Built target epson-printer-cli_autogen_timestamp_deps
+epson-printer-utility> [ 57%] Built target report-test_autogen_timestamp_deps
+epson-printer-utility> [ 57%] Built target epson-printer-utility_autogen_timestamp_deps
+epson-printer-utility> [ 59%] Automatic MOC for target epson-printer-cli
+epson-printer-utility> [ 60%] Automatic MOC for target epson-printer-utility
+epson-printer-utility> [ 62%] Automatic MOC for target report-test
+epson-printer-utility> [ 62%] Built target epson-printer-cli_autogen
+epson-printer-utility> [ 62%] Built target report-test_autogen
+epson-printer-utility> [ 63%] Building CXX object CMakeFiles/epson-printer-cli.dir/epson-printer-cli_autogen/mocs_compilation.cpp.o
+epson-printer-utility> [ 65%] Building CXX object CMakeFiles/epson-printer-cli.dir/src/cli.cpp.o
+epson-printer-utility> [ 66%] Building CXX object CMakeFiles/report-test.dir/report-test_autogen/mocs_compilation.cpp.o
+epson-printer-utility> [ 68%] Building CXX object CMakeFiles/report-test.dir/tests/report.cpp.o
+epson-printer-utility> [ 68%] Built target epson-printer-utility_autogen
+epson-printer-utility> [ 69%] Automatic RCC for epson-printer-utility/PrinterUtility/Resources.qrc
+epson-printer-utility> [ 72%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUMainWindow.cpp.o
+epson-printer-utility> [ 72%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUView.cpp.o
+epson-printer-utility> [ 73%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility_autogen/mocs_compilation.cpp.o
+epson-printer-utility> [ 76%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUMainController.cpp.o
+epson-printer-utility> [ 76%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/Main.cpp.o
+epson-printer-utility> [ 78%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUMaintenanceGuideView.cpp.o
+epson-printer-utility> [ 79%] Linking CXX executable epson-printer-cli
+epson-printer-utility> [ 81%] Linking CXX executable report-test
+epson-printer-utility> [ 82%] Built target epson-printer-cli
+epson-printer-utility> [ 84%] Built target report-test
+epson-printer-utility> [ 85%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUCallbackObject.cpp.o
+epson-printer-utility> [ 86%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUMainView.cpp.o
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:17,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.cpp:13:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qabstractanimation.h:43,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/QtCore:6,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/QtGuiDepends:3,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/QtGui:3,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/../EPUCommon/EPUCommonDef.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainWindow.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:15:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> [ 88%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUOperationView.cpp.o
+epson-printer-utility> [ 89%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUGlobal.cpp.o
+epson-printer-utility> [ 91%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUInkLevelView.cpp.o
+epson-printer-utility> [ 92%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUPrinterListDialog.cpp.o
+epson-printer-utility> In file included from /build/source/build/epson-printer-utility_autogen/S766KLN6K4/../../../epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/build/epson-printer-utility_autogen/S766KLN6K4/moc_EPUMainView.cpp:10,
+epson-printer-utility>                  from /build/source/build/epson-printer-utility_autogen/mocs_compilation.cpp:2:
+epson-printer-utility> /build/source/build/epson-printer-utility_autogen/S766KLN6K4/../../../epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/qwidget.h:45,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/QWidget:1,
+epson-printer-utility>                  from /build/source/build/epson-printer-utility_autogen/S766KLN6K4/../../../epson-printer-utility/PrinterUtility/EPUView.h:15,
+epson-printer-utility>                  from /build/source/build/epson-printer-utility_autogen/S766KLN6K4/../../../epson-printer-utility/PrinterUtility/EPUMainView.h:15:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.cpp:12:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/qwidget.h:45,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/QWidget:1,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:15:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:17,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUGlobal.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainWindow.cpp:14:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qabstractanimation.h:43,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/QtCore:6,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/QtGuiDepends:3,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/QtGui:3,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/../EPUCommon/EPUCommonDef.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainWindow.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainWindow.cpp:12:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:17,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUGlobal.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/Main.cpp:13:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qcoreapplication.h:44,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/qapplication.h:44,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/QApplication:1,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/Main.cpp:12:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.cpp:12:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/qwidget.h:45,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/QWidget:1,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUView.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:15:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> [ 94%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp.o
+epson-printer-utility> [ 95%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility/PrinterUtility/EPUPrinter.cpp.o
+epson-printer-utility> [ 97%] Building CXX object CMakeFiles/epson-printer-utility.dir/epson-printer-utility_autogen/S766KLN6K4/qrc_Resources.cpp.o
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:17,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUGlobal.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUGlobal.cpp:12:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qabstractanimation.h:43,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/QtCore:6,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/QtGuiDepends:3,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/QtGui:3,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/../EPUCommon/EPUCommonDef.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainWindow.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:15:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.cpp: In member function 'virtual void EPUInkLevelView::paintEvent(QPaintEvent*)':
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.cpp:155:46: warning: 'int QFontMetrics::width(const QString&, int) const' is deprecated: Use QFontMetrics::horizontalAdvance [-Wdeprecated-declarations]
+epson-printer-utility>   155 |                 int textWidth = metrics.width(m_strInkName);
+epson-printer-utility>       |                                 ~~~~~~~~~~~~~^~~~~~~~~~~~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtWidgets/qwidget.h:50:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/qfontmetrics.h:106:9: note: declared here
+epson-printer-utility>   106 |     int width(const QString &, int len = -1) const;
+epson-printer-utility>       |         ^~~~~
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.cpp:173:58: warning: 'int QFontMetrics::width(const QString&, int) const' is deprecated: Use QFontMetrics::horizontalAdvance [-Wdeprecated-declarations]
+epson-printer-utility>   173 |                                 textWidth = metrics.width(inkLevelText);
+epson-printer-utility>       |                                             ~~~~~~~~~~~~~^~~~~~~~~~~~~~
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtGui/qfontmetrics.h:106:9: note: declared here
+epson-printer-utility>   106 |     int width(const QString &, int len = -1) const;
+epson-printer-utility>       |         ^~~~~
+epson-printer-utility> In file included from /build/source/epson-printer-utility/PrinterUtility/EPUMainView.h:19,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUMainController.h:17,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUGlobal.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp:14:
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUInkLevelView.h:22:78: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>    22 |     explicit EPUInkLevelView(QColor color, const QString& inkName = QString::null, QWidget *parent = 0);
+epson-printer-utility>       |                                                                              ^~~~
+epson-printer-utility> In file included from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qobject.h:47,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qthread.h:44,
+epson-printer-utility>                  from /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/QThread:1,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/../EPUCommon/EThread.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.h:15,
+epson-printer-utility>                  from /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp:12:
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp: In member function 'void EPUPrinterController::GetPrinterListFromLib()':
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp:148:36: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>   148 |     QString printerName = QString::null;
+epson-printer-utility>       |                                    ^~~~
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp:149:34: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>   149 |     QString modelName = QString::null;
+epson-printer-utility>       |                                  ^~~~
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> /build/source/epson-printer-utility/PrinterUtility/EPUPrinterController.cpp:150:34: warning: 'QString::null' is deprecated: use QString() [-Wdeprecated-declarations]
+epson-printer-utility>   150 |     QString printerId = QString::null;
+epson-printer-utility>       |                                  ^~~~
+epson-printer-utility> /nix/store/lk9q25ayk0jfsgxpaj6p3jb94npchrn2-qtbase-5.15.19-dev/include/QtCore/qstring.h:951:23: note: declared here
+epson-printer-utility>   951 |     static const Null null;
+epson-printer-utility>       |                       ^~~~
+epson-printer-utility> [ 98%] Linking CXX executable epson-printer-utility
+epson-printer-utility> [100%] Built target epson-printer-utility
+epson-printer-utility> Running phase: checkPhase
+epson-printer-utility> check flags: SHELL=/nix/store/jnyfsf2mp08d1xyz2m72ic2vz2kcx0sd-bash-5.3p9/bin/bash VERBOSE=y test
+epson-printer-utility> Running tests...
+epson-printer-utility> /nix/store/v4m910fin3csvzhv8pq6aivvi6ghmzmp-cmake-4.1.6/bin/ctest
+epson-printer-utility> Test project /build/source/build
+epson-printer-utility>     Start 1: reported-ink
+epson-printer-utility>     Start 2: native-parser
+epson-printer-utility>     Start 3: cli-offline
+epson-printer-utility> 1/3 Test #2: native-parser ....................   Passed    0.00 sec
+epson-printer-utility> 2/3 Test #1: reported-ink .....................   Passed    0.01 sec
+epson-printer-utility> 3/3 Test #3: cli-offline ......................   Passed    8.04 sec
+epson-printer-utility> 
+epson-printer-utility> 100% tests passed, 0 tests failed out of 3
+epson-printer-utility> 
+epson-printer-utility> Total Test time (real) =   8.05 sec
+epson-printer-utility> Running phase: glibPreInstallPhase
+epson-printer-utility> Running phase: glibPreInstallPhase
+epson-printer-utility> Running phase: installPhase
+epson-printer-utility> install flags: -j8 SHELL=/nix/store/jnyfsf2mp08d1xyz2m72ic2vz2kcx0sd-bash-5.3p9/bin/bash gsettingsschemadir=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/gsettings-schemas/epson-printer-utility-1.1.3/glib-2.0/schemas/ gsettingsschemadir=/nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/gsettings-schemas/epson-printer-utility-1.1.3/glib-2.0/schemas/ install
+epson-printer-utility> [  0%] Built target parser-test_autogen_timestamp_deps
+epson-printer-utility> [  0%] Built target EPSCommonLib_autogen_timestamp_deps
+epson-printer-utility> [  1%] Built target parser-test_autogen
+epson-printer-utility> [  2%] Built target EPSCommonLib_autogen
+epson-printer-utility> [ 10%] Built target parser-test
+epson-printer-utility> [ 57%] Built target EPSCommonLib
+epson-printer-utility> [ 57%] Built target report-test_autogen_timestamp_deps
+epson-printer-utility> [ 57%] Built target epson-printer-cli_autogen_timestamp_deps
+epson-printer-utility> [ 57%] Built target epson-printer-utility_autogen_timestamp_deps
+epson-printer-utility> [ 59%] Built target report-test_autogen
+epson-printer-utility> [ 60%] Built target epson-printer-utility_autogen
+epson-printer-utility> [ 62%] Built target epson-printer-cli_autogen
+epson-printer-utility> [ 68%] Built target report-test
+epson-printer-utility> [ 73%] Built target epson-printer-cli
+epson-printer-utility> [100%] Built target epson-printer-utility
+epson-printer-utility> Install the project...
+epson-printer-utility> -- Install configuration: "Release"
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/epson-printer-utility
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/epson-printer-cli
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_ja.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_es.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_de.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_zh_CN.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_zh_TW.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_fr.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_ru.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_ko.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_it.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_pt.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/epson-printer-utility/Languages/utilitytr_nl.qm
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/applications/epson-printer-utility.desktop
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/icons/hicolor/256x256/apps/epson-printer-utility.png
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/doc/epson-printer-utility/COPYING
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/doc/epson-printer-utility/AUTHORS
+epson-printer-utility> -- Installing: /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/share/doc/epson-printer-utility/README
+epson-printer-utility> Running phase: qtOwnPathsHook
+epson-printer-utility> Running phase: fixupPhase
+epson-printer-utility> wrapping Qt applications in /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/sbin /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/libexec /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/Applications
+epson-printer-utility> wrapping /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/epson-printer-utility
+epson-printer-utility> wrapping /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/epson-printer-cli
+epson-printer-utility> shrinking RPATHs of ELF executables and libraries in /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3
+epson-printer-utility> shrinking /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/epson-printer-utility
+epson-printer-utility> shrinking /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/epson-printer-cli
+epson-printer-utility> shrinking /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/.epson-printer-utility-wrapped
+epson-printer-utility> shrinking /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin/.epson-printer-cli-wrapped
+epson-printer-utility> checking for references to /build/ in /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3...
+epson-printer-utility> patching script interpreter paths in /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3
+epson-printer-utility> stripping (with command strip and flags -S -p) in  /nix/store/6v7c5prgp1bz1gby9wh9i46n3yhh8j1z-epson-printer-utility-1.1.3/bin
+epson-printer-utility> Running phase: postPatchMkspecs
+building '/nix/store/qx3spvjs66pnl6rc0bpaz4dbs0axy491-epson-utility-suite-1.1.3.drv'...
+building '/nix/store/zk7z5mrl1i8f9c4p8y4kf9g6j2mi0fdj-unit-epson-nozzle-check.service.drv'...
+building '/nix/store/nz0hc00y3552c4dgnl02p0w0323wdkv2-epson-module-check.drv'...

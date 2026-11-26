@@ -1,0 +1,11 @@
+Final scope: standalone printer-utils only (native GUI, CLI, ecbd, USB permissions,
+optional nozzle-check timer). No print-server or print-queue configuration delivered.
+
+Final build: validation/build-final.log; all three regression checks passed.
+Final flake check: validation/flake-check.log; all checks passed on x86_64-linux.
+Development shell: validation/devshell.log; CMake, g++, qmake, Python available.
+GUI: final real desktop window observed in validation/gui-final-window.txt.
+Hardware: status/ink JSON and human confirmation recorded separately.
+Temporary ecbd was stopped after tests; USB released. Timer was never enabled.
+No further maintenance command was sent after the one cleaning confirmed by the user.
+The final standalone build was checked after removing unused dependencies and server integration.

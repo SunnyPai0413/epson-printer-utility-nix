@@ -1,0 +1,6 @@
+2026-11-26 Asia/Singapore
+Previous round: user observed Y still had broken lines but was much improved.
+User explicitly authorized one additional round.
+This round: exactly two ordinary clean invocations followed by one native nozzle-check.
+All three returned native_result=0 and the controller observed idle afterward.
+No automatic next round. Physical actions, sheet output and pattern quality await user confirmation.

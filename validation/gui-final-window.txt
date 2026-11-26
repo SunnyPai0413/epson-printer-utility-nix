@@ -1,0 +1,3 @@
+WM_NAME(STRING) = "Epson Printer Utility"
+WM_CLASS(STRING) = "epson-printer-utility", "EpsonPrinterUtility"
+_NET_WM_PID(CARDINAL) = 2309470

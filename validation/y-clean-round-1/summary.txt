@@ -1,0 +1,7 @@
+2026-11-26 Asia/Singapore
+User authorized this new round: two ordinary cleanings, then one native nozzle check, then ask.
+clean-1: native_result=0; device returned to idle.
+clean-2: native_result=0; device returned to idle.
+nozzle-check: native_result=0; device returned to idle.
+Exactly two clean invocations and one nozzle-check invocation; no automatic next round.
+Physical cleaning, sheet output and yellow pattern quality await user confirmation.

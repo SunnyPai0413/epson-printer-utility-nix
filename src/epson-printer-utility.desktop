@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Epson Printer Utility
+Exec=epson-printer-utility
+Icon=epson-printer-utility
+Categories=Settings;HardwareSettings;
+Terminal=false

@@ -1,0 +1,7 @@
+2026-11-26 Asia/Singapore
+User requested one final round after learning the manufacturer's interval guidance.
+Exactly two ordinary clean invocations followed by one native nozzle-check.
+Each returned native_result=0; controller observed idle after each operation.
+Total ordinary cleaning invocations across this session: 7 (initial 1, then 3 rounds of 2).
+No Power Ink Flushing, no automatic command replay, no further round.
+Final pattern quality and physical output await user confirmation.

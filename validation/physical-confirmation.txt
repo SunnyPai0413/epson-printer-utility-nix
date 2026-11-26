@@ -1,0 +1,9 @@
+2026-11-26, Asia/Singapore
+Nozzle check: user reported: 刚刚纸没放到底，现在好了，不过图案Y不清晰
+Exactly one epson-nozzle-check.service invocation. The user confirmed a printed pattern,
+with Y unclear, after correcting paper loading. Software reported unconfirmed after a
+follow-up communication failure; no second command was sent.
+Cleaning: user explicitly authorized scheduling it, then reported: 确认进行了清洗，现已结束
+Exactly one ordinary HeadCleanPrinter invocation. No Power Ink Flushing, no repeat cleaning,
+and no post-clean nozzle check were requested or sent.
+Timer remains disabled. CUPS remained active throughout.

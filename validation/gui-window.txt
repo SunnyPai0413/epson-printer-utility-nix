@@ -1,0 +1,6 @@
+Observed on the management host, real X11/XWayland display :0:
+WM_NAME = "Epson Printer Utility"
+WM_CLASS = "epson-printer-utility", "EpsonPrinterUtility"
+_NET_WM_PID = 2278055
+The GUI was launched from the source-built Nix package, without an ecbd daemon.
+Its offline state was displayed; no maintenance command was invoked by the GUI.

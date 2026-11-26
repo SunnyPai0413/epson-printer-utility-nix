@@ -1,0 +1,6 @@
+/result*
+/build/
+/.work/
+/upstream/epson-printer-utility/
+/upstream/epson-backend/
+__pycache__/

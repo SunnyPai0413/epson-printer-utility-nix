@@ -1,0 +1,6 @@
+Nov 25 23:55:07 nixos systemd[1]: Started [systemd-run] /nix/store/nadz6dsh21f8l1yl1v4s2kvy679a62bj-epson-backend-1.3.1/bin/ecbd.
+Nov 25 23:57:05 nixos systemd[1]: Stopping [systemd-run] /nix/store/nadz6dsh21f8l1yl1v4s2kvy679a62bj-epson-backend-1.3.1/bin/ecbd...
+Nov 25 23:57:06 nixos systemd[1]: epson-ecbd-validation.service: Deactivated successfully.
+Nov 25 23:57:06 nixos systemd[1]: Stopped [systemd-run] /nix/store/nadz6dsh21f8l1yl1v4s2kvy679a62bj-epson-backend-1.3.1/bin/ecbd.
+Nov 25 23:57:06 nixos systemd[1]: epson-ecbd-validation.service: Consumed 30ms CPU time over 1min 58.580s wall clock time, 2M memory peak, 320K read from disk, 1.4K incoming IP traffic, 2K outgoing IP traffic.
+Nov 25 23:57:41 nixos systemd[1]: Started [systemd-run] /nix/store/d4zhy6nj8j4y8nysqxdml7ifnbb9hk6i-epson-backend-1.3.1/bin/ecbd.
