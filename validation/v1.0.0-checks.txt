@@ -63,3 +63,33 @@ installation integration. IPP printing is not direct Epson network maintenance.
 No physical print/maintenance command, cleaning or reboot was performed for this
 version/documentation preparation. These validation checks preceded the later
 user-authorized commit/push; they did not create a Tag or Release.
+
+Documentation-only Windows IPP RAW supplement — 2026-11-26 Asia/Singapore:
+
+CONFIRMED BY MAINTAINER: Epson L805 high-quality A4 photo-paper printing using
+                        the Windows Epson original driver succeeded.
+CONFIRMED BY MAINTAINER: Windows Epson driver nozzle check succeeded.
+CONFIRMED BY MAINTAINER: Windows Epson driver Power Ink Flushing succeeded.
+Path: Windows application / Epson driver -> IPP -> CUPS RAW queue ->
+      existing ecblp/ecbd backend -> USB L805.
+The RAW and normal ESC/P-R queues reuse the ecblp URI and shared operation/FIFO
+write locks. Power Ink Flushing is supplied by the Windows driver, not by this
+project's GUI, CLI or timer. Project clean remains ordinary cleaning.
+
+Evidence: user-supplied physical confirmations in this documentation request;
+no new raw hardware logs, Windows/driver version details or measured DPI supplied.
+NOT TESTED: actual ink-placement DPI, CD/DVD printing, Windows bidirectional
+status queries, other Windows/driver combinations or maintenance during printing.
+
+Scope: README, CHANGELOG, release notes and validation records only. Version
+remains 1.0.0; existing Git Tags are not moved. No queue, service, firewall or
+Windows settings are changed by this documentation update. The documented RAW
+recipe depends on deprecated CUPS 2.x features; no CUPS 3 migration is supplied.
+Earlier build/test results above are retained historical evidence, not new runs
+for this supplement. No physical print/maintenance command or reboot is performed.
+
+PASS (documentation checks only): git diff --check; 17 local documentation links
+     and anchors; 13 shell examples parsed with bash -n without executing them;
+     Markdown code fences paired.
+PASS: only the five intended documentation files changed; VERSION remains 1.0.0.
+      Git HEAD and tag refs match the snapshot taken before this supplement.

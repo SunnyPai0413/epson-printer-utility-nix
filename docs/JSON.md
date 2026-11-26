@@ -1,5 +1,7 @@
 # CLI JSON schema 2
 
+[返回首页](../README.md) · [安装配置](INSTALL.md) · [打印配置](PRINTING.md)
+
 Project v1.0.0 preserves `status`, `ink`, `nozzle-check`, `clean`, `--json`,
 `--confirm-clean`, and `nozzle-check --scheduled`; it adds `devices`, `paper-count`
 and `--connection all|usb|network`. In this release, `project_version` is `1.0.0`,
