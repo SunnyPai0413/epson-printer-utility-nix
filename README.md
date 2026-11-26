@@ -53,6 +53,46 @@ services.epson-printer-utility = {
 
 只运行网络状态查询可直接 `nix run ...#cli`，无需模块。执行维护还需要模块创建的共享锁和相应访问权限。此仓库提供 NixOS 集成，未提供其他 Linux 发行版的服务安装脚本。
 
+## Cachix 二进制缓存与 CI
+
+Cachix 是 **Nix binary cache（二进制缓存）**，不是传统安装包下载站，也不提供 `.deb`、`.rpm` 或独立安装器。Nix 根据 Flake 版本、锁定的依赖与系统架构匹配 store 路径，命中缓存时直接下载构建结果；未命中时仍会从源码构建。
+
+两个架构分别使用 GitHub 原生 Ubuntu Runner，独立构建和上传，不使用交叉编译。下列徽章分别显示各自 `main` 分支的构建与上传状态；首次成功执行前不表示已有缓存，也不代表打印机实机验证。
+
+| 架构 | 原生 Runner | 构建与缓存发布状态 |
+| --- | --- | --- |
+| `x86_64-linux` | `ubuntu-24.04` | [![x86_64-linux](https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/workflows/cache-x86_64-linux.yml/badge.svg?branch=main)](https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/workflows/cache-x86_64-linux.yml) |
+| `aarch64-linux` | `ubuntu-24.04-arm` | [![aarch64-linux](https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/workflows/cache-aarch64-linux.yml/badge.svg?branch=main)](https://github.com/SunnyPai0413/epson-printer-utility-nix/actions/workflows/cache-aarch64-linux.yml) |
+
+### 维护者配置
+
+先在 [Cachix](https://app.cachix.org/) 创建缓存。供所有用户下载时选择 **Public**，签名选择 **Managed by Cachix**，并创建具有该缓存写入权限的 Token。在 GitHub 仓库 **Settings → Secrets and variables → Actions** 中配置：
+
+| 类型 | 名称 | 内容 |
+| --- | --- | --- |
+| Repository variable（Variables） | `CACHIX_CACHE_NAME` | 实际缓存名称，不含 `https://` 或 `.cachix.org` |
+| Repository secret（Secrets） | `CACHIX_AUTH_TOKEN` | 具有该缓存写入权限的 Cachix Token |
+
+缺少任一配置时，工作流会在安装 Nix 和构建前明确报错；Token 只从 Secret 读取。仓库需要启用 GitHub Actions，并允许工作流使用上述 Runner 和所引用的 Actions。
+
+推送到 `main`、推送 `v*` Tag 或在 Actions 页面手动运行对应架构工作流时，都会调用共用的 [构建工作流](.github/workflows/build-cache.yml)，构建 `packages.<system>.default`、`epson-printer-utility` 和 `epson-backend`。`ecblp` 与 `epson-backend` 是同一产物，无需另建；Nix 会复用默认包与子包之间的共享依赖。
+
+每个架构的三个目标全部成功后，才启用 [`cachix/cachix-action@v17`](https://github.com/cachix/cachix-action/tree/v17) 的自动上传，通过 `pathsToPush` 限定为这些输出及其运行依赖，不扫描整个 Nix store，也不额外执行 `cachix push`。ARM 失败不会取消或影响 x86 的结果；失败架构不会启用上传，成功架构独立发布。此流程只发布 Nix 缓存，不创建 GitHub Release。
+
+### 使用缓存
+
+将下例 `YOUR-CACHE-NAME` 替换为维护者配置的 `CACHIX_CACHE_NAME` 实际值；本地不会自动读取 GitHub Actions Variable：
+
+```sh
+CACHIX_CACHE_NAME='YOUR-CACHE-NAME'
+nix run nixpkgs#cachix -- use "$CACHIX_CACHE_NAME"
+nix build github:SunnyPai0413/epson-printer-utility-nix#default
+```
+
+按 `cachix use` 输出的提示完成 Nix 配置。NixOS 用户将实际缓存地址与公钥加入 `nix.settings.extra-substituters`、`nix.settings.extra-trusted-public-keys` 后应用系统配置；公钥可从该缓存的 Cachix 页面获取。公共缓存下载无需写入 Token。若选择私有缓存，下载者还需配置自己的只读凭据，见 [Cachix 使用说明](https://docs.cachix.org/using-a-cache)。
+
+缓存按实际 store 路径匹配。建议使用 CI 已成功构建的提交或 Tag，并保持锁文件与架构一致；`#epson-printer-utility`、`#epson-backend`、`#ecblp` 以及 NixOS 模块安装也使用同一套 Nix 缓存机制。
+
 ## 使用
 
 安装模块后可以直接运行 `epson-printer-cli` 和 `epson-printer-utility`：

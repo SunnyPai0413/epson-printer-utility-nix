@@ -1,0 +1,19 @@
+name: Cachix x86_64-linux
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cache:
+    uses: ./.github/workflows/build-cache.yml
+    with:
+      system: x86_64-linux
+      runner: ubuntu-24.04
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}

@@ -1,0 +1,90 @@
+name: Build and cache Nix packages
+
+on:
+  workflow_call:
+    inputs:
+      system:
+        description: Native Nix system to build
+        required: true
+        type: string
+      runner:
+        description: GitHub-hosted Ubuntu runner for this system
+        required: true
+        type: string
+    secrets:
+      CACHIX_AUTH_TOKEN:
+        description: Write token for the Cachix cache
+        required: false # Checked below so missing configuration has an explicit error.
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and publish ${{ inputs.system }}
+    runs-on: ${{ inputs.runner }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check Cachix configuration
+        env:
+          CACHIX_CACHE_NAME: ${{ vars.CACHIX_CACHE_NAME }}
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+        run: |
+          missing=0
+          if [[ -z "${CACHIX_CACHE_NAME//[[:space:]]/}" ]]; then
+            echo "::error::Set the repository Actions variable CACHIX_CACHE_NAME to your Cachix cache name."
+            missing=1
+          fi
+          if [[ -z "${CACHIX_AUTH_TOKEN//[[:space:]]/}" ]]; then
+            echo "::error::Set the repository Actions secret CACHIX_AUTH_TOKEN to a token with write access to that cache."
+            missing=1
+          fi
+          exit "$missing"
+
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: Build package outputs
+        id: build
+        env:
+          TARGET_SYSTEM: ${{ inputs.system }}
+        run: |
+          native_system="$(nix eval --impure --raw --expr builtins.currentSystem)"
+          if [[ "$native_system" != "$TARGET_SYSTEM" ]]; then
+            echo "::error::Expected a native $TARGET_SYSTEM runner, got $native_system."
+            exit 1
+          fi
+
+          # ecblp aliases epson-backend; Nix builds shared dependencies only once.
+          paths="$(nix build --no-link --print-out-paths --no-write-lock-file \
+            ".#packages.${TARGET_SYSTEM}.default" \
+            ".#packages.${TARGET_SYSTEM}.epson-printer-utility" \
+            ".#packages.${TARGET_SYSTEM}.epson-backend" | sort -u)"
+          if [[ -z "$paths" ]]; then
+            echo "::error::The build returned no output paths; refusing to configure an unrestricted upload."
+            exit 1
+          fi
+          {
+            echo 'paths<<EOF'
+            printf '%s\n' "$paths"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      # Register the action only after every requested output has built successfully.
+      # Its post step uploads these paths and their runtime closures, without a store scan.
+      - name: Publish successful outputs to Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: ${{ vars.CACHIX_CACHE_NAME }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          useDaemon: false
+          pathsToPush: ${{ steps.build.outputs.paths }}
