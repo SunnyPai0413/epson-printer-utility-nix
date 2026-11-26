@@ -38,7 +38,15 @@ in {
       "d ${runtime} 0770 epson-ecbd epson-maintenance -"
       "f ${runtime}/operation.lock 0660 epson-ecbd epson-maintenance -"
       "f ${runtime}/fifo.lock 0660 epson-ecbd epson-maintenance -"
-    ] ++ lib.optional cfg.usb.enable "p ${runtime}/ecblp0 0660 epson-ecbd epson-maintenance -";
+    ] ++ lib.optional cfg.usb.enable "p ${runtime}/ecblp0 0660 epson-ecbd epson-maintenance -"
+      ++ lib.optionals cfg.cups.enable [
+        # CUPS backends retain lp, but may drop supplementary groups.
+        # Default ACLs also cover files recreated by ecbd.
+        "a+ ${runtime} - - - - g:lp:rwx,d:g:lp:rwx"
+        "a+ ${runtime}/ecblp0 - - - - g:lp:rw"
+        "a+ ${runtime}/fifo.lock - - - - g:lp:rw"
+        "a+ ${runtime}/operation.lock - - - - g:lp:rw"
+      ];
     services.udev.extraRules = mkIf cfg.usb.enable (let
       selector = ''ATTR{idVendor}=="04b8"''
         + lib.optionalString (cfg.device.productId != null) '', ATTR{idProduct}=="${lib.toLower cfg.device.productId}"''
