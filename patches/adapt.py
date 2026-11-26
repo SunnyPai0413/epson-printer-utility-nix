@@ -693,31 +693,81 @@ def cups_backend(s):
     start = s.index('\tdo\n\t{\n\t\tif ((fd = open')
     end = s.index('\n\t/*\n\t * Finally', start)
     s = s[:start] + '''    int operation = epson_operation_lock(1);
-    if (operation < 0) return 1;
+    if (operation < 0) {
+        int error = errno;
+        fprintf(stderr, "ERROR: print setup stage=operation-lock errno=%d (%s)\\n", error, strerror(error));
+        return 1;
+    }
     int writer = epson_fifo_lock(1);
-    if (writer < 0) { close(operation); return 1; }
+    if (writer < 0) {
+        int error = errno;
+        fprintf(stderr, "ERROR: print setup stage=fifo-lock errno=%d (%s)\\n", error, strerror(error));
+        close(operation); return 1;
+    }
     fd = -1;
+    int open_error = 0;
     for (int attempt = 0; attempt < 50 && fd < 0; ++attempt) {
         fd = epson_fifo_open(resource);
-        if (fd < 0 && errno != ENXIO && errno != ENOENT) break;
-        if (fd < 0) usleep(100000);
+        if (fd >= 0) break;
+        open_error = errno;
+        if (open_error != ENXIO && open_error != ENOENT) break;
+        usleep(100000);
     }
     if (fd < 0) {
-        fprintf(stderr, "ERROR: ecbd FIFO unavailable\\n");
+        fprintf(stderr, "ERROR: print setup stage=fifo-open path=%s errno=%d (%s); ecbd FIFO unavailable\\n",
+                resource, open_error, strerror(open_error));
         close(writer); close(operation); return 1;
     }
+    /* Leave SIGTERM enabled for CUPS cancellation during FIFO backpressure. */
 ''' + s[end:]
-    start = s.index('\t\t\twhile (nbytes > 0)')
-    end = s.index('\n\t\t\tif (argc > 6)', start)
-    s = s[:start] + '''            if (epson_fifo_write(fd, bufptr, nbytes) < 0) {
-                fprintf(stderr, "ERROR: print transfer failed; not replaying data\\n");
-                close(fd); close(writer); close(operation); return 1;
+    start = s.index('\twhile (copies > 0)')
+    end = s.index('\n\treturn (0);', start) + len('\n\treturn (0);')
+    s = s[:start] + '''    int result = 1;
+    size_t transferred = 0;
+    while (copies > 0) {
+        --copies;
+        if (fp != stdin) {
+            err_msg(MSGTYPE_MESSAGE, "PAGE: 1 1\\n");
+            if (fseek(fp, 0, SEEK_SET) != 0) {
+                int error = errno;
+                fprintf(stderr, "ERROR: print transfer stage=input-rewind errno=%d (%s) after %zu bytes; not replaying data\\n",
+                        error, strerror(error), transferred);
+                goto transfer_done;
             }
-''' + s[end:]
-    s = replace(s, '\tclose(fd);', '\tclose(fd);\n    close(writer); close(operation);')
-    s = replace(s, '\treturn (0);', '\treturn ferror(fp) ? 1 : 0;')
-    # ferror must be checked before fclose.
-    s = replace(s, '\tif (fp != stdin)\n\t\tfclose(fp);\n\n\treturn ferror(fp) ? 1 : 0;', '\tint failed = ferror(fp);\n    if (fp != stdin) fclose(fp);\n    return failed ? 1 : 0;')
+        }
+        tbytes = 0;
+        for (;;) {
+            errno = 0;
+            nbytes = fread(buffer, 1, sizeof(buffer), fp);
+            int read_error = ferror(fp) ? (errno ? errno : EIO) : 0;
+            if (nbytes > 0) {
+                size_t written;
+                /* A live, slow ecbd reader is backpressure, without a deadline. */
+                if (epson_fifo_write_wait(fd, buffer, nbytes, -1, &written) < 0) {
+                    int error = errno;
+                    transferred += written;
+                    fprintf(stderr, "ERROR: print transfer stage=fifo-write errno=%d (%s) after %zu bytes; not replaying data\\n",
+                            error, strerror(error), transferred);
+                    goto transfer_done;
+                }
+                transferred += written;
+                tbytes += written;
+                if (argc > 6)
+                    err_msg(MSGTYPE_INFO, "INFO: Sending print file, %lu bytes...\\n", (unsigned long)tbytes);
+            }
+            if (read_error) {
+                fprintf(stderr, "ERROR: print transfer stage=input-read errno=%d (%s) after %zu bytes; not replaying data\\n",
+                        read_error, strerror(read_error), transferred);
+                goto transfer_done;
+            }
+            if (nbytes == 0) break;
+        }
+    }
+    result = 0;
+transfer_done:
+    close(fd); close(writer); close(operation);
+    if (fp != stdin) fclose(fp);
+    return result;''' + s[end:]
     # This backend manages one explicitly selected ecbd USB printer.
     start = s.index('\tfor (i = 0;;i ++)')
     end = s.index('\n\treturn;', start)

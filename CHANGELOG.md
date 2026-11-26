@@ -9,6 +9,7 @@ Upstream remains Epson Printer Utility 1.1.3 / epson-backend 1.3.1.
 - Add `devices` and `paper-count`; preserve the four existing CLI commands.
 - JSON schema 2: variable ink lists, distinct black variants, independent warnings and communication outcome; see docs/JSON.md.
 - Build/install native ecblp; optional NixOS CUPS integration with shared FIFO paths and locks.
+- Let ecblp wait through sustained FIFO backpressure, retaining cancellation and no replay on failure; log I/O stages, errno and poll events.
 - Run GUI maintenance waits in a worker; retain one-command, fail-closed scheduled maintenance.
 - Add public installation, source/license and validation documentation.
 - Mark every adapted upstream source file with a dated modification notice and install its generated file list.
